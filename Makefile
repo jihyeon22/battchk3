@@ -34,7 +34,7 @@ CFLAGS	+=
 LDFLAGS	+=
 
 OBJS	:= src/batt.chk.o
-APP	:= batt2.chk
+APP	:= batt3.chk
 
 all:		$(APP)
 
