@@ -23,29 +23,30 @@ LDFLAGS	:= $(EXTRA_LDFLAGS)
 
 ###############################################################################
 # Board Setting
-
-BOARD	:=
 CFLAGS	+= -DBOARD_$(BOARD)
 
 ###############################################################################
 # Target rules
 
 CFLAGS	+=
-LDFLAGS	+=
+LDFLAGS	+=  -lmdsapi 
 
 OBJS	:= src/batt.chk.o
-APP	:= batt3.chk
+APP	:= battchk3
+
+WORK_PATH    := /system/$(VER)
 
 all:		$(APP)
 
 $(APP):		$(OBJS)
-	$(Q)$(CC) $(CFLAGS) -o $@ $^
+	$(Q)$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 install:	install-binary
 
 install-binary:	$(APP)
 	$(Q)$(call check_install_dir, $(DESTDIR)$(BINDIR))
 	$(Q)fakeroot cp -v $(APP) $(DESTDIR)$(BINDIR)/$(APP)
+	$(Q)fakeroot cp -v $(APP) $(DESTDIR)$(WORK_PATH)
 
 clean:
 	$(Q)rm -vrf $(APP) $(OBJS) 
