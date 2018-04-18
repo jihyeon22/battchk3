@@ -1,5 +1,5 @@
-#ifndef __BOARD_TL500K_H__
-#define __BOARD_TL500K_H__
+#ifndef __BOARD_TL500_H__
+#define __BOARD_TL500_H__
 
 #define GPIO_SRC_NUM_IGNITION			30
 #define POWER_IGNITION_ON		(0)
